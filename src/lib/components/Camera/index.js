@@ -39,6 +39,8 @@ function Camera (props) {
     getDataUri
   ] = useLibCameraPhoto(videoRef, props.idealFacingMode, props.idealResolution, props.isMaxResolution);
 
+  const Button = typeof props.button !== "undefined" ? props.button : CircleButton;
+
   useEffect(() => {
     if (mediaStream) {
       if (typeof props.onCameraStart === 'function') {
@@ -143,7 +145,7 @@ function Camera (props) {
         muted={true}
         playsInline
       />
-      <CircleButton
+      <Button
         isClicked={!isShowVideo}
         onClick={handleTakePhoto}
       />
